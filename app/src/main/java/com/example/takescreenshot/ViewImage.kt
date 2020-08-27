@@ -30,7 +30,8 @@ class ViewImage {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 val locationOfView = IntArray(2)
                 view.getLocationInWindow(locationOfView)
-                val rect = Rect(locationOfView[0], locationOfView[1], view.width, view.height)
+                val rect = Rect(locationOfView[0], locationOfView[1],
+                        locationOfView[0] + view.width, locationOfView[1] + view.height)
 
                 bitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
                 try {
@@ -53,7 +54,7 @@ class ViewImage {
             }
         }
 
-//      Method which will return Bitmap after taking screenshot. We have to pass the view which
+        //      Method which will return Bitmap after taking screenshot. We have to pass the view which
 //      we want to take screenshot.
         @Suppress("DEPRECATION")
         @JvmStatic
